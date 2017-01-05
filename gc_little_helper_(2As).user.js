@@ -4,7 +4,7 @@
 //<-- $$000 End of change
 // @namespace      http://www.amshove.net
 //--> $$000 Begin of change "11.6"
-// @version        11.6.8
+// @version        11.6.9
 //<-- $$000 End of change
 // @include        http://www.geocaching.com/*
 // @include        https://www.geocaching.com/*
@@ -12874,30 +12874,38 @@ var mainGC = function () {
         if ( AS ) {
             next_check = 60 * 60 * 1000; // 1 Stunde
             if ((last_check + next_check) < time) {
-                var url = "https://github.com/2Abendsegler/GC_little_helper_2AS/raw/master/gc_little_helper_(2As).user.js";
-                if (GM_xmlhttpRequest) {
-                    GM_xmlhttpRequest({
-                        method: "GET",
-                        url: url,
-                        onload: function (result) {
-                            try {
-                                var version = result.responseText.match(/\/\/\s\@version(.*)/);
-                                if ( version ) {
-                                    var new_version = version[1].replace(/\s/g, "");
-                                    setValue("new_version", new_version);
-                                    if ( new_version != scriptVersion ) {
-                                        var text = "Version " + new_version + " of " + scriptName + " greasemonkey script is available.\n" +
-                                                   "You are currently using version " + scriptVersion + ".\n\n" +
-                                                   "Click OK to upgrade.\n";
-                                        if (window.confirm(text)) window.open(url, '_blank');
-                                    }
-                                }
-                            } catch (e) { 
-                                gclh_error("Check for Updates 2AS", e); 
-                            }
-                        }
-                    });
-                }
+//--> $$END Begin of delete
+//                var url = "https://github.com/2Abendsegler/GC_little_helper_2AS/raw/master/gc_little_helper_(2As).user.js";
+//                if (GM_xmlhttpRequest) {
+//                    GM_xmlhttpRequest({
+//                        method: "GET",
+//                        url: url,
+//                        onload: function (result) {
+//                            try {
+//                                var version = result.responseText.match(/\/\/\s\@version(.*)/);
+//                                if ( version ) {
+//                                    var new_version = version[1].replace(/\s/g, "");
+//                                    setValue("new_version", new_version);
+//                                    if ( new_version != scriptVersion ) {
+//                                        var text = "Version " + new_version + " of " + scriptName + " greasemonkey script is available.\n" +
+//                                                   "You are currently using version " + scriptVersion + ".\n\n" +
+//                                                   "Click OK to upgrade.\n";
+//                                        if (window.confirm(text)) window.open(url, '_blank');
+//                                    }
+//                                }
+//                            } catch (e) { 
+//                                gclh_error("Check for Updates 2AS", e); 
+//                            }
+//                        }
+//                    });
+//                }
+//<-- $$END End of delete 
+//--> $$END Begin of insert
+                var text = 'Das Testscript "GC little helper (2As)" wird nicht weiterentwickelt.\n'
+                         + 'Mit dem überarbeiteten Script zum "GC little helper" geht es hier weiter:\n'
+                         + 'https://geoclub.de/forum/viewtopic.php?f=117&t=79372';
+                alert( text );
+//<-- $$END End of insert
 //--> $$059-8 Begin of insert
                 setValue('update_last_check', time.toString());
 //<-- $$059-8 End of insert
